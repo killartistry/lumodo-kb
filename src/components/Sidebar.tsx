@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Building2, FileText, ClipboardCheck, Settings,
@@ -101,9 +102,7 @@ export function Sidebar() {
       {/* Logo */}
       <div className="p-5 border-b border-[var(--border)]">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[var(--primary)] flex items-center justify-center">
-            <span className="text-white font-bold text-sm">L</span>
-          </div>
+          <Image src="/lumodo-logo.webp" alt="Lumodo" width={36} height={36} className="rounded-lg" />
           <div>
             <h1 className="text-base font-semibold text-[var(--foreground)]">Lumodo</h1>
             <p className="text-[11px] text-[var(--slate)] -mt-0.5">Knowledge Base</p>

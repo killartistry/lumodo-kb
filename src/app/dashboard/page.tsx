@@ -21,12 +21,12 @@ export default function DashboardPage() {
       <table>
         <thead><tr><th>KPI</th><th>Example Value</th><th>What It Means</th></tr></thead>
         <tbody>
-          <tr><td>Gross Potential Rent</td><td>$19,037,114.00</td><td>Maximum revenue if all units leased at market rate</td></tr>
-          <tr><td>Effective Gross Income</td><td>$19,349,002.00</td><td>GPR minus vacancy/concessions, plus other income</td></tr>
-          <tr><td>Net Operating Income</td><td>$7,576,824.00</td><td>Revenue minus operating expenses</td></tr>
-          <tr><td>Operating Expense Ratio</td><td>60.84%</td><td>Operating expenses as % of income</td></tr>
-          <tr><td>Maintenance Expense Ratio</td><td>11.07%</td><td>Maintenance costs as % of income</td></tr>
-          <tr><td>Utility Expense Ratio</td><td>11.19%</td><td>Utility costs as % of income</td></tr>
+          <tr><td>Gross Potential Rent</td><td>$12,483,760.00</td><td>Maximum revenue if all units leased at market rate</td></tr>
+          <tr><td>Effective Gross Income</td><td>$11,927,345.00</td><td>GPR minus vacancy/concessions, plus other income</td></tr>
+          <tr><td>Net Operating Income</td><td>$4,853,219.00</td><td>Revenue minus operating expenses</td></tr>
+          <tr><td>Operating Expense Ratio</td><td>57.32%</td><td>Operating expenses as % of income</td></tr>
+          <tr><td>Maintenance Expense Ratio</td><td>8.64%</td><td>Maintenance costs as % of income</td></tr>
+          <tr><td>Utility Expense Ratio</td><td>9.41%</td><td>Utility costs as % of income</td></tr>
         </tbody>
       </table>
 
