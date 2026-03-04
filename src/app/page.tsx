@@ -1,65 +1,57 @@
-import Image from "next/image";
+import Link from "next/link";
+import { LayoutDashboard, Building2, FileText, ClipboardCheck, Settings } from "lucide-react";
+
+const sections = [
+  { icon: <LayoutDashboard size={24} />, title: "Dashboard", description: "Portfolio Snapshot with KPIs, charts, and T12 views.", href: "/dashboard" },
+  { icon: <Building2 size={24} />, title: "Properties", description: "Manage property assets, details, occupancy, and status.", href: "/properties" },
+  { icon: <FileText size={24} />, title: "Reports", description: "Financial reports, occupancy reports, and upload status.", href: "/reports" },
+  { icon: <ClipboardCheck size={24} />, title: "Period Report Status", description: "Track period report submissions across all properties.", href: "/period-report-status" },
+  { icon: <Settings size={24} />, title: "Settings", description: "User profile, dark/light mode, and team permissions.", href: "/settings" },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="max-w-4xl">
+      {/* Hero */}
+      <div className="mb-10">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-11 h-11 rounded-xl bg-[var(--primary)] flex items-center justify-center">
+            <span className="text-white font-bold text-lg">L</span>
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold text-[var(--foreground)]">Lumodo Knowledge Base</h1>
+            <p className="text-sm text-[var(--slate)]">Private product documentation</p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <p className="text-[var(--slate)] leading-relaxed max-w-xl">
+          Documentation for the Lumodo platform. Navigate the sections below to learn about each feature you see when you log in.
+        </p>
+      </div>
+
+      {/* 5 Main Sections */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+        {sections.map((s) => (
+          <Link key={s.href} href={s.href} className="group block bg-[var(--card)] rounded-xl border border-[var(--border)] p-5 hover:border-[var(--primary)] hover:shadow-sm transition-all">
+            <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-[var(--primary)] mb-3 group-hover:bg-amber-100 transition-colors">
+              {s.icon}
+            </div>
+            <h3 className="font-semibold text-[var(--foreground)] mb-1">{s.title}</h3>
+            <p className="text-sm text-[var(--slate)]">{s.description}</p>
+          </Link>
+        ))}
+      </div>
+
+      {/* Quick Links */}
+      <div className="bg-[var(--card)] rounded-xl border border-[var(--border)] p-5">
+        <h2 className="text-sm font-semibold text-[var(--foreground)] mb-3">Quick Links</h2>
+        <div className="flex flex-wrap gap-2">
+          <Link href="/getting-started" className="text-sm text-[var(--primary)] hover:underline">Getting Started</Link>
+          <span className="text-[var(--border)]">|</span>
+          <Link href="/faq" className="text-sm text-[var(--primary)] hover:underline">FAQ</Link>
+          <span className="text-[var(--border)]">|</span>
+          <Link href="/glossary" className="text-sm text-[var(--primary)] hover:underline">Glossary</Link>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
