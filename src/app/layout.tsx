@@ -18,14 +18,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="robots" content="noindex, nofollow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </head>
       <body className="antialiased overflow-hidden h-dvh">
-        <div className="flex h-full">
+        <div className="flex h-full w-full">
           <Sidebar />
-          <div className="flex-1 flex flex-col min-w-0 bg-[var(--background)] relative z-10">
+          <div className="flex-1 flex flex-col min-w-0 h-full">
             <TopBar />
-            <main className="flex-1 overflow-y-auto p-4 md:p-8 lg:p-10">
+            <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-8 lg:p-10">
               {children}
             </main>
           </div>

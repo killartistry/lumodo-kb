@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -86,6 +86,11 @@ export function Sidebar() {
   const [expanded, setExpanded] = useState<string[]>(["Dashboard", "Properties", "Reports", "Period Report Status"]);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Close sidebar on route change (mobile)
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   const toggle = (label: string) => {
     setExpanded((prev) =>
       prev.includes(label) ? prev.filter((s) => s !== label) : [...prev, label]
@@ -97,7 +102,7 @@ export function Sidebar() {
     return pathname === href || pathname.startsWith(href + "/");
   };
 
-  const content = (
+  const sidebarContent = (
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="p-5 border-b border-[var(--border)]">
@@ -117,7 +122,7 @@ export function Sidebar() {
 
       <nav className="flex-1 overflow-y-auto px-3 pb-3">
         {navigation.slice(0, 5).map((item) => (
-          <NavGroup key={item.label} item={item} expanded={expanded} toggle={toggle} isActive={isActive} closeMobile={() => setMobileOpen(false)} />
+          <NavGroup key={item.label} item={item} expanded={expanded} toggle={toggle} isActive={isActive} />
         ))}
 
         {/* OTHERS label */}
@@ -126,7 +131,7 @@ export function Sidebar() {
         </div>
 
         {navigation.slice(5).map((item) => (
-          <NavGroup key={item.label} item={item} expanded={expanded} toggle={toggle} isActive={isActive} closeMobile={() => setMobileOpen(false)} />
+          <NavGroup key={item.label} item={item} expanded={expanded} toggle={toggle} isActive={isActive} />
         ))}
       </nav>
 
@@ -138,31 +143,48 @@ export function Sidebar() {
 
   return (
     <>
+      {/* Mobile hamburger button */}
       <button
-        onClick={() => setMobileOpen(!mobileOpen)}
-        className="fixed top-3 left-3 z-50 md:hidden p-2 rounded-lg bg-[var(--card)] border border-[var(--border)]"
-        aria-label="Toggle menu"
+        onClick={() => setMobileOpen(true)}
+        className="fixed top-3 left-3 z-30 md:hidden p-2 rounded-lg bg-[var(--card)] border border-[var(--border)]"
+        aria-label="Open menu"
       >
-        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+        <Menu size={20} />
       </button>
 
+      {/* Mobile overlay + sidebar */}
       {mobileOpen && (
-        <div className="fixed inset-0 bg-black/30 z-30 md:hidden" onClick={() => setMobileOpen(false)} />
+        <div className="fixed inset-0 z-50 md:hidden" aria-modal="true">
+          {/* Dark backdrop — covers entire screen */}
+          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
+          {/* Sidebar panel — solid background */}
+          <div className="absolute inset-y-0 left-0 w-[280px] max-w-[85vw] bg-[var(--card)] shadow-xl" style={{ backgroundColor: 'var(--card)' }}>
+            {/* Close button inside sidebar */}
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-[var(--background)] text-[var(--slate)]"
+              aria-label="Close menu"
+            >
+              <X size={18} />
+            </button>
+            {sidebarContent}
+          </div>
+        </div>
       )}
 
-      <aside className={`${mobileOpen ? "fixed inset-y-0 left-0 z-40" : "hidden"} md:relative md:block h-dvh md:h-full w-[260px] bg-[var(--card)] border-r border-[var(--border)] flex-shrink-0`}>
-        {content}
+      {/* Desktop sidebar — always visible, in normal document flow */}
+      <aside className="hidden md:block w-[260px] bg-[var(--card)] border-r border-[var(--border)] flex-shrink-0" style={{ backgroundColor: 'var(--card)' }}>
+        {sidebarContent}
       </aside>
     </>
   );
 }
 
-function NavGroup({ item, expanded, toggle, isActive, closeMobile }: {
+function NavGroup({ item, expanded, toggle, isActive }: {
   item: NavItem;
   expanded: string[];
   toggle: (label: string) => void;
   isActive: (href: string) => boolean;
-  closeMobile: () => void;
 }) {
   if (item.children) {
     return (
@@ -181,7 +203,6 @@ function NavGroup({ item, expanded, toggle, isActive, closeMobile }: {
               <Link
                 key={child.href}
                 href={child.href}
-                onClick={closeMobile}
                 className={`block px-2.5 py-1.5 rounded-md text-[13px] transition-colors ${
                   isActive(child.href)
                     ? "text-[var(--primary)] font-medium bg-amber-50"
@@ -201,7 +222,6 @@ function NavGroup({ item, expanded, toggle, isActive, closeMobile }: {
     <div className="mb-0.5">
       <Link
         href={item.href!}
-        onClick={closeMobile}
         className={`flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-colors ${
           isActive(item.href!)
             ? "text-[var(--primary)] font-medium bg-amber-50"
