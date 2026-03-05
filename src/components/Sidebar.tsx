@@ -146,7 +146,8 @@ export function Sidebar() {
       {/* Mobile hamburger button */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed top-3 left-3 z-30 md:hidden p-2 rounded-lg bg-[var(--card)] border border-[var(--border)]"
+        className="fixed top-3 left-3 md:hidden p-2 rounded-lg border border-gray-200 shadow-sm"
+        style={{ zIndex: 40, backgroundColor: '#FFFFFF' }}
         aria-label="Open menu"
       >
         <Menu size={20} />
@@ -154,15 +155,23 @@ export function Sidebar() {
 
       {/* Mobile overlay + sidebar */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 md:hidden" aria-modal="true">
+        <div className="fixed inset-0 md:hidden" style={{ zIndex: 9999 }} aria-modal="true">
           {/* Dark backdrop — covers entire screen */}
-          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
-          {/* Sidebar panel — solid background */}
-          <div className="absolute inset-y-0 left-0 w-[280px] max-w-[85vw] bg-[var(--card)] shadow-xl" style={{ backgroundColor: 'var(--card)' }}>
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+            onClick={() => setMobileOpen(false)}
+          />
+          {/* Sidebar panel — hardcoded solid white background */}
+          <div
+            className="absolute inset-y-0 left-0 w-[280px] max-w-[85vw] shadow-2xl border-r border-[var(--border)] overflow-y-auto"
+            style={{ backgroundColor: '#FFFFFF' }}
+          >
             {/* Close button inside sidebar */}
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-[var(--background)] text-[var(--slate)]"
+              className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-gray-100 text-gray-500"
+              style={{ zIndex: 1 }}
               aria-label="Close menu"
             >
               <X size={18} />
@@ -173,7 +182,10 @@ export function Sidebar() {
       )}
 
       {/* Desktop sidebar — always visible, in normal document flow */}
-      <aside className="hidden md:block w-[260px] bg-[var(--card)] border-r border-[var(--border)] flex-shrink-0" style={{ backgroundColor: 'var(--card)' }}>
+      <aside
+        className="hidden md:block w-[260px] border-r border-[var(--border)] flex-shrink-0"
+        style={{ backgroundColor: '#FFFFFF' }}
+      >
         {sidebarContent}
       </aside>
     </>

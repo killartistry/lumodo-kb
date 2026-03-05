@@ -10,7 +10,7 @@ export function TopBar() {
 
   return (
     <>
-      <header className="h-14 border-b border-[var(--border)] bg-[var(--card)] flex items-center justify-between pl-14 pr-4 md:px-6 flex-shrink-0">
+      <header className="h-14 border-b border-[var(--border)] flex items-center justify-between pl-14 pr-4 md:px-6 flex-shrink-0" style={{ backgroundColor: '#FFFFFF' }}>
         <Breadcrumbs />
         <button
           onClick={() => setSearchOpen(true)}
