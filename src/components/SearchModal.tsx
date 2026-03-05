@@ -67,7 +67,7 @@ export function SearchModal({ open, onClose }: { open: boolean; onClose: () => v
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 search-backdrop flex items-start justify-center pt-[20vh]" onClick={onClose}>
+    <div className="fixed inset-0 z-50 search-backdrop flex items-start justify-center pt-[15vh] sm:pt-[20vh]" onClick={onClose}>
       <div className="bg-[var(--card)] rounded-xl shadow-2xl border border-[var(--border)] w-full max-w-lg mx-4 overflow-hidden" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)]">
           <Search size={18} className="text-[var(--slate)]" />

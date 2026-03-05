@@ -10,11 +10,11 @@ export function TopBar() {
 
   return (
     <>
-      <header className="h-14 border-b border-[var(--border)] bg-[var(--card)] flex items-center justify-between px-4 md:px-6 flex-shrink-0">
+      <header className="h-14 border-b border-[var(--border)] bg-[var(--card)] flex items-center justify-between pl-14 pr-4 md:px-6 flex-shrink-0">
         <Breadcrumbs />
         <button
           onClick={() => setSearchOpen(true)}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border)] text-sm text-[var(--slate)] hover:border-[var(--primary)] hover:text-[var(--foreground)] transition-colors"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border)] text-sm text-[var(--slate)] hover:border-[var(--primary)] hover:text-[var(--foreground)] transition-colors flex-shrink-0"
         >
           <Search size={14} />
           <span className="hidden sm:inline">Search...</span>
