@@ -67,17 +67,34 @@ export function SearchModal({ open, onClose }: { open: boolean; onClose: () => v
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 search-backdrop flex items-start justify-center pt-[15vh] sm:pt-[20vh]" onClick={onClose}>
-      <div className="bg-[var(--card)] rounded-xl shadow-2xl border border-[var(--border)] w-full max-w-lg mx-4 overflow-hidden" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-[10000] search-backdrop flex items-start justify-center pt-[10vh] sm:pt-[20vh] px-3 sm:px-4" onClick={onClose}>
+      <div className="bg-white rounded-xl shadow-2xl border border-[var(--border)] w-full max-w-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)]">
-          <Search size={18} className="text-[var(--slate)]" />
-          <input ref={inputRef} type="text" value={query} onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0); }} onKeyDown={handleKeyDown} placeholder="Search documentation..." className="flex-1 outline-none text-sm bg-transparent text-[var(--foreground)] placeholder:text-[var(--light-slate)]" />
-          <button onClick={onClose} className="p-1 rounded hover:bg-[var(--background)]"><X size={16} className="text-[var(--slate)]" /></button>
+          <Search size={18} className="text-[var(--slate)] flex-shrink-0" />
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0); }}
+            onKeyDown={handleKeyDown}
+            placeholder="Search documentation..."
+            className="flex-1 outline-none text-base sm:text-sm bg-transparent text-[var(--foreground)] placeholder:text-[var(--light-slate)]"
+            autoComplete="off"
+            autoCorrect="off"
+            spellCheck={false}
+          />
+          <button onClick={onClose} className="p-1.5 rounded hover:bg-[var(--background)] flex-shrink-0">
+            <X size={16} className="text-[var(--slate)]" />
+          </button>
         </div>
         {query.length > 0 && (
-          <div className="max-h-80 overflow-y-auto py-2">
+          <div className="max-h-[60vh] sm:max-h-80 overflow-y-auto py-2">
             {results.length > 0 ? results.map((r, i) => (
-              <button key={r.item.href} onClick={() => navigate(r.item.href)} className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${i === selectedIndex ? "bg-amber-50" : "hover:bg-[var(--background)]"}`}>
+              <button
+                key={r.item.href}
+                onClick={() => navigate(r.item.href)}
+                className={`w-full flex items-center gap-3 px-4 py-3 sm:py-2.5 text-left transition-colors ${i === selectedIndex ? "bg-amber-50" : "hover:bg-[var(--background)] active:bg-gray-50"}`}
+              >
                 <FileText size={16} className="text-[var(--primary)] flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-[var(--foreground)] truncate">{r.item.title}</p>

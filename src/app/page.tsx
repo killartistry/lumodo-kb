@@ -11,38 +11,38 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="max-w-4xl">
+    <div className="max-w-4xl w-full">
       {/* Hero */}
-      <div className="mb-10">
+      <div className="mb-8 sm:mb-10">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-11 h-11 rounded-xl bg-[var(--primary)] flex items-center justify-center">
-            <span className="text-white font-bold text-lg">L</span>
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[var(--primary)] flex items-center justify-center flex-shrink-0">
+            <span className="text-white font-bold text-base sm:text-lg">L</span>
           </div>
-          <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-[var(--foreground)]">Lumodo Knowledge Base</h1>
-            <p className="text-sm text-[var(--slate)]">Private product documentation</p>
+          <div className="min-w-0">
+            <h1 className="text-lg sm:text-2xl font-bold text-[var(--foreground)] truncate">Lumodo Knowledge Base</h1>
+            <p className="text-xs sm:text-sm text-[var(--slate)]">Private product documentation</p>
           </div>
         </div>
-        <p className="text-[var(--slate)] leading-relaxed max-w-xl">
+        <p className="text-sm sm:text-base text-[var(--slate)] leading-relaxed max-w-xl">
           Documentation for the Lumodo platform. Navigate the sections below to learn about each feature you see when you log in.
         </p>
       </div>
 
       {/* 5 Main Sections */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 sm:mb-10">
         {sections.map((s) => (
-          <Link key={s.href} href={s.href} className="group block bg-[var(--card)] rounded-xl border border-[var(--border)] p-5 hover:border-[var(--primary)] hover:shadow-sm transition-all">
-            <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-[var(--primary)] mb-3 group-hover:bg-amber-100 transition-colors">
+          <Link key={s.href} href={s.href} className="group block bg-white rounded-xl border border-[var(--border)] p-4 sm:p-5 hover:border-[var(--primary)] hover:shadow-sm active:bg-gray-50 transition-all">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-amber-50 flex items-center justify-center text-[var(--primary)] mb-2.5 sm:mb-3 group-hover:bg-amber-100 transition-colors">
               {s.icon}
             </div>
-            <h3 className="font-semibold text-[var(--foreground)] mb-1">{s.title}</h3>
-            <p className="text-sm text-[var(--slate)]">{s.description}</p>
+            <h3 className="font-semibold text-[var(--foreground)] mb-1 text-sm sm:text-base">{s.title}</h3>
+            <p className="text-xs sm:text-sm text-[var(--slate)]">{s.description}</p>
           </Link>
         ))}
       </div>
 
       {/* Quick Links */}
-      <div className="bg-[var(--card)] rounded-xl border border-[var(--border)] p-5">
+      <div className="bg-white rounded-xl border border-[var(--border)] p-4 sm:p-5">
         <h2 className="text-sm font-semibold text-[var(--foreground)] mb-3">Quick Links</h2>
         <div className="flex flex-wrap gap-2">
           <Link href="/getting-started" className="text-sm text-[var(--primary)] hover:underline">Getting Started</Link>

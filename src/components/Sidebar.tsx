@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -91,16 +91,26 @@ export function Sidebar() {
     setMobileOpen(false);
   }, [pathname]);
 
-  const toggle = (label: string) => {
+  // Lock body scroll when mobile sidebar is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  const toggle = useCallback((label: string) => {
     setExpanded((prev) =>
       prev.includes(label) ? prev.filter((s) => s !== label) : [...prev, label]
     );
-  };
+  }, []);
 
-  const isActive = (href: string) => {
+  const isActive = useCallback((href: string) => {
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(href + "/");
-  };
+  }, [pathname]);
 
   const sidebarContent = (
     <div className="flex flex-col h-full">
@@ -146,32 +156,26 @@ export function Sidebar() {
       {/* Mobile hamburger button */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed top-3 left-3 md:hidden p-2 rounded-lg border border-gray-200 shadow-sm"
-        style={{ zIndex: 40, backgroundColor: '#FFFFFF' }}
+        className="fixed top-3 left-3 z-40 md:hidden p-2 rounded-lg border border-[var(--border)] shadow-sm bg-white active:bg-gray-50"
         aria-label="Open menu"
       >
-        <Menu size={20} />
+        <Menu size={20} className="text-[var(--foreground)]" />
       </button>
 
       {/* Mobile overlay + sidebar */}
       {mobileOpen && (
-        <div className="fixed inset-0 md:hidden" style={{ zIndex: 9999 }} aria-modal="true">
-          {/* Dark backdrop — covers entire screen */}
+        <div className="fixed inset-0 z-[9999] md:hidden" aria-modal="true" role="dialog">
+          {/* Dark backdrop */}
           <div
-            className="absolute inset-0"
-            style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+            className="absolute inset-0 bg-black/60"
             onClick={() => setMobileOpen(false)}
           />
-          {/* Sidebar panel — hardcoded solid white background */}
-          <div
-            className="absolute inset-y-0 left-0 w-[280px] max-w-[85vw] shadow-2xl border-r border-[var(--border)] overflow-y-auto"
-            style={{ backgroundColor: '#FFFFFF' }}
-          >
-            {/* Close button inside sidebar */}
+          {/* Sidebar panel */}
+          <div className="absolute inset-y-0 left-0 w-[280px] max-w-[85vw] shadow-2xl border-r border-[var(--border)] overflow-y-auto bg-white">
+            {/* Close button */}
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-gray-100 text-gray-500"
-              style={{ zIndex: 1 }}
+              className="absolute top-4 right-4 z-10 p-2 rounded-lg hover:bg-gray-100 text-gray-500 active:bg-gray-200"
               aria-label="Close menu"
             >
               <X size={18} />
@@ -181,11 +185,8 @@ export function Sidebar() {
         </div>
       )}
 
-      {/* Desktop sidebar — always visible, in normal document flow */}
-      <aside
-        className="hidden md:block w-[260px] border-r border-[var(--border)] flex-shrink-0"
-        style={{ backgroundColor: '#FFFFFF' }}
-      >
+      {/* Desktop sidebar */}
+      <aside className="hidden md:flex md:flex-col md:w-[260px] border-r border-[var(--border)] flex-shrink-0 bg-white h-full">
         {sidebarContent}
       </aside>
     </>
@@ -203,7 +204,7 @@ function NavGroup({ item, expanded, toggle, isActive }: {
       <div className="mb-0.5">
         <button
           onClick={() => toggle(item.label)}
-          className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-[var(--slate)] hover:bg-[var(--background)] hover:text-[var(--foreground)] transition-colors"
+          className="w-full flex items-center gap-2.5 px-2.5 py-2.5 md:py-2 rounded-lg text-sm text-[var(--slate)] hover:bg-[var(--background)] hover:text-[var(--foreground)] active:bg-gray-100 transition-colors"
         >
           {item.icon}
           <span className="flex-1 text-left font-medium">{item.label}</span>
@@ -215,10 +216,10 @@ function NavGroup({ item, expanded, toggle, isActive }: {
               <Link
                 key={child.href}
                 href={child.href}
-                className={`block px-2.5 py-1.5 rounded-md text-[13px] transition-colors ${
+                className={`block px-2.5 py-2 md:py-1.5 rounded-md text-[13px] transition-colors ${
                   isActive(child.href)
                     ? "text-[var(--primary)] font-medium bg-amber-50"
-                    : "text-[var(--slate)] hover:text-[var(--foreground)] hover:bg-[var(--background)]"
+                    : "text-[var(--slate)] hover:text-[var(--foreground)] hover:bg-[var(--background)] active:bg-gray-100"
                 }`}
               >
                 {child.label}
@@ -234,10 +235,10 @@ function NavGroup({ item, expanded, toggle, isActive }: {
     <div className="mb-0.5">
       <Link
         href={item.href!}
-        className={`flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-colors ${
+        className={`flex items-center gap-2.5 px-2.5 py-2.5 md:py-2 rounded-lg text-sm transition-colors ${
           isActive(item.href!)
             ? "text-[var(--primary)] font-medium bg-amber-50"
-            : "text-[var(--slate)] hover:bg-[var(--background)] hover:text-[var(--foreground)]"
+            : "text-[var(--slate)] hover:bg-[var(--background)] hover:text-[var(--foreground)] active:bg-gray-100"
         }`}
       >
         {item.icon}

@@ -7,21 +7,21 @@ import { ChevronRight } from "lucide-react";
 const labelMap: Record<string, string> = {
   "getting-started": "Getting Started",
   dashboard: "Dashboard",
-  kpis: "Key Performance Indicators",
+  kpis: "KPIs",
   charts: "Charts",
   views: "T12 / Actual / Compare",
-  export: "Exporting to PDF",
+  export: "Export PDF",
   properties: "Properties",
-  adding: "Adding a Property",
-  editing: "Editing Details",
+  adding: "Adding",
+  editing: "Editing",
   occupancy: "Occupancy",
   archiving: "Archiving",
   reports: "Reports",
-  financial: "Financial Reports",
-  creating: "Creating a Report",
-  "period-report-status": "Period Report Status",
-  statuses: "Applied vs Pending",
-  tracking: "Tracking Submissions",
+  financial: "Financial",
+  creating: "Creating",
+  "period-report-status": "Period Status",
+  statuses: "Statuses",
+  tracking: "Tracking",
   settings: "Settings",
   faq: "FAQ",
   glossary: "Glossary",
@@ -39,10 +39,10 @@ export function Breadcrumbs() {
   }));
 
   return (
-    <nav className="flex items-center gap-1.5 text-sm min-w-0 overflow-hidden">
+    <nav className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm min-w-0 overflow-hidden">
       <Link href="/" className="text-[var(--slate)] hover:text-[var(--foreground)] transition-colors flex-shrink-0">Home</Link>
       {crumbs.map((crumb) => (
-        <span key={crumb.href} className="flex items-center gap-1.5 min-w-0">
+        <span key={crumb.href} className="flex items-center gap-1 sm:gap-1.5 min-w-0">
           <ChevronRight size={12} className="text-[var(--light-slate)] flex-shrink-0" />
           {crumb.isLast ? (
             <span className="font-medium text-[var(--foreground)] truncate">{crumb.label}</span>
