@@ -150,7 +150,7 @@ export function Sidebar() {
         <div className="fixed inset-0 bg-black/30 z-30 md:hidden" onClick={() => setMobileOpen(false)} />
       )}
 
-      <aside className={`fixed md:static z-40 h-full w-[260px] bg-[var(--card)] border-r border-[var(--border)] flex-shrink-0 transition-transform duration-200 ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+      <aside className={`fixed md:static z-40 h-dvh md:h-full w-[260px] bg-[var(--card)] border-r border-[var(--border)] flex-shrink-0 transition-transform duration-200 ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
         {content}
       </aside>
     </>

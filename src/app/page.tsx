@@ -19,7 +19,7 @@ export default function Home() {
             <span className="text-white font-bold text-lg">L</span>
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-[var(--foreground)]">Lumodo Knowledge Base</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--foreground)]">Lumodo Knowledge Base</h1>
             <p className="text-sm text-[var(--slate)]">Private product documentation</p>
           </div>
         </div>
