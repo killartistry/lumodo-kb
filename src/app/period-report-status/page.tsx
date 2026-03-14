@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_PERIOD_STATUS } from "@/components/UIScreenshot";
 
 export default function PeriodReportStatusPage() {
   return (
     <PageLayout title="Period Report Status" subtitle="Track period report submissions across all properties.">
+      <UIScreenshot
+        src="/images/ui/period-status.png"
+        alt="Upload Status — Viewing Period, summary cards, and property submission table"
+        blurZones={BLUR_PERIOD_STATUS}
+        caption="The Period Report Status page showing submission tracking by property"
+      />
+
       <h2>What You See</h2>
       <p>Accessed via <strong>Reports &gt; Upload Status</strong>. The page shows which properties have submitted their monthly P&amp;L data and which haven&apos;t.</p>
 

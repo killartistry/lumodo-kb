@@ -1,9 +1,17 @@
 import { PageLayout } from "@/components/PageLayout";
 import { CalloutBox } from "@/components/CalloutBox";
+import { UIScreenshot, BLUR_PROPERTIES } from "@/components/UIScreenshot";
 
 export default function ArchivingPage() {
   return (
     <PageLayout title="Archiving Properties" subtitle="How archiving works and when to use it.">
+      <UIScreenshot
+        src="/images/ui/properties.png"
+        alt="Properties page — Show Archived checkbox in the top-right"
+        blurZones={BLUR_PROPERTIES}
+        caption="Use the Show Archived checkbox to toggle visibility of archived properties"
+      />
+
       <h2>Archive vs Delete</h2>
       <ul>
         <li><strong>Archive</strong> — Hides the property from the default table view but keeps all historical data intact. You can unarchive at any time.</li>

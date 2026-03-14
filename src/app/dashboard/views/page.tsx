@@ -1,8 +1,15 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot } from "@/components/UIScreenshot";
 
 export default function ViewsPage() {
   return (
     <PageLayout title="T12 / Actual / Compare Views" subtitle="Switching between different data views on the Dashboard.">
+      <UIScreenshot
+        src="/images/ui/compare-view.png"
+        alt="Dashboard in Compare mode — showing variance vs budget with Actual and Compare toggles"
+        caption="The Compare view showing variance vs budget with KPIs and charts side by side"
+      />
+
       <h2>T12 (Trailing 12 Months)</h2>
       <p>The default view. Shows a rolling 12-month window of financial data. The date range updates automatically — for example, if today is March 2026, the T12 view shows April 2025 through March 2026.</p>
       <p>Use the T12 dropdown to select different rolling periods.</p>

@@ -1,8 +1,15 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot } from "@/components/UIScreenshot";
 
 export default function ExportPage() {
   return (
     <PageLayout title="Exporting to PDF" subtitle="Download your portfolio snapshot as a formatted PDF.">
+      <UIScreenshot
+        src="/images/ui/export-pdf.png"
+        alt="Save as PDF dialog — print preview of the Portfolio Snapshot with KPIs and charts"
+        caption="The Export PDF dialog showing a preview of the formatted Portfolio Snapshot"
+      />
+
       <h2>How to Export</h2>
       <ol>
         <li>Navigate to the Dashboard</li>

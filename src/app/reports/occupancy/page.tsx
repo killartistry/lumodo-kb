@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_REPORTS } from "@/components/UIScreenshot";
 
 export default function OccupancyReportsPage() {
   return (
     <PageLayout title="Occupancy Reports" subtitle="Unit-level occupancy data across your portfolio.">
+      <UIScreenshot
+        src="/images/ui/reports.png"
+        alt="Reports page — Occupancy Reports tab"
+        blurZones={BLUR_REPORTS}
+        caption="The Occupancy Reports tab showing property-level occupancy data"
+      />
+
       <h2>Filters</h2>
       <ul>
         <li><strong>Property dropdown</strong> — Filter by a specific property or view All Properties</li>

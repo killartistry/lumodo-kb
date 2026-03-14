@@ -1,9 +1,17 @@
 import { PageLayout } from "@/components/PageLayout";
 import { CalloutBox } from "@/components/CalloutBox";
+import { UIScreenshot, BLUR_DASHBOARD } from "@/components/UIScreenshot";
 
 export default function DashboardPage() {
   return (
     <PageLayout title="Portfolio Snapshot" subtitle="Your real-time view of portfolio-wide financial performance.">
+      <UIScreenshot
+        src="/images/ui/dashboard.png"
+        alt="Dashboard — Portfolio Snapshot with KPIs, charts, and controls"
+        blurZones={BLUR_DASHBOARD}
+        caption="The Portfolio Snapshot dashboard showing KPIs, income vs expense charts, and NOI trend"
+      />
+
       <h2>What You See</h2>
       <p>The Dashboard shows a <strong>Portfolio Snapshot</strong> with a &quot;Portfolio &bull; T12&quot; subtitle. It displays a rolling 12-month view of your entire portfolio&apos;s financial data.</p>
 

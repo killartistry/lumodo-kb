@@ -1,8 +1,18 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot } from "@/components/UIScreenshot";
 
 export default function SettingsPage() {
   return (
     <PageLayout title="Settings & Account" subtitle="User profile, appearance, and organization settings.">
+      <UIScreenshot
+        src="/images/ui/settings-menu.png"
+        alt="Profile dropdown — Change Password, Admin Panel, and Log out options"
+        blurZones={[
+          { top: "1%", left: "78%", width: "22%", height: "12%" },
+        ]}
+        caption="The user profile dropdown with Change Password, Admin Panel, and Log out options"
+      />
+
       <h2>What You See</h2>
       <p>Settings are accessed from the top-right area of the app. You&apos;ll see:</p>
       <ul>
@@ -15,7 +25,12 @@ export default function SettingsPage() {
       <p>Click the sun/moon icon in the top-right to toggle between dark and light themes. The app remembers your preference.</p>
 
       <h2>User Profile</h2>
-      <p>Click your avatar or name to access your profile settings. Here you can update your display name and account preferences.</p>
+      <p>Click your avatar or name to open the profile dropdown. From here you can:</p>
+      <ul>
+        <li><strong>Change Password</strong> — Update your account password</li>
+        <li><strong>Admin Panel</strong> — Access organization admin settings (admin roles only)</li>
+        <li><strong>Log out</strong> — Sign out of your account</li>
+      </ul>
 
       <h2>Organization Settings</h2>
       <p>Available to Tenant Admins. Manage your organization&apos;s name, settings, and configurations.</p>

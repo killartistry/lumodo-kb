@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_PROPERTIES } from "@/components/UIScreenshot";
 
 export default function OccupancyPage() {
   return (
     <PageLayout title="Occupancy" subtitle="Tracking unit occupancy for each property.">
+      <UIScreenshot
+        src="/images/ui/properties.png"
+        alt="Properties table — Occupancy link in the Actions column"
+        blurZones={BLUR_PROPERTIES}
+        caption="Click the Occupancy link in the Actions column to view occupancy data"
+      />
+
       <h2>Viewing Occupancy</h2>
       <p>Click the <strong>Occupancy</strong> link in the Actions column of any property row to see occupancy data for that property.</p>
 

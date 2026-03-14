@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_PERIOD_STATUS } from "@/components/UIScreenshot";
 
 export default function StatusesPage() {
   return (
     <PageLayout title="Applied vs Pending" subtitle="What the two status types mean.">
+      <UIScreenshot
+        src="/images/ui/period-status.png"
+        alt="Upload Status — Pending and Applied status badges in the table"
+        blurZones={BLUR_PERIOD_STATUS}
+        caption="Applied (green) and Pending (amber) status badges in the submission table"
+      />
+
       <h2>Applied</h2>
       <p>Shown as a <strong>green badge</strong>. This means the property&apos;s monthly financial report has been:</p>
       <ol>

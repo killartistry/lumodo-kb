@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LayoutDashboard, Building2, FileText, ClipboardCheck, Settings } from "lucide-react";
+import { UIScreenshot, BLUR_DASHBOARD } from "@/components/UIScreenshot";
 
 const sections = [
   { icon: <LayoutDashboard size={24} />, title: "Dashboard", description: "Portfolio Snapshot with KPIs, charts, and T12 views.", href: "/dashboard" },
@@ -26,6 +27,16 @@ export default function Home() {
         <p className="text-sm sm:text-base text-[var(--slate)] leading-relaxed max-w-xl">
           Documentation for the Lumodo platform. Navigate the sections below to learn about each feature you see when you log in.
         </p>
+      </div>
+
+
+      {/* Platform Overview */}
+      <div className="mb-8 sm:mb-10">
+        <UIScreenshot
+          src="/images/ui/dashboard.png"
+          alt="Lumodo Dashboard — Portfolio Snapshot with KPIs and charts"
+          blurZones={BLUR_DASHBOARD}
+        />
       </div>
 
       {/* 5 Main Sections */}

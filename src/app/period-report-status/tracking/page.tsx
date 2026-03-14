@@ -1,9 +1,17 @@
 import { PageLayout } from "@/components/PageLayout";
 import { CalloutBox } from "@/components/CalloutBox";
+import { UIScreenshot, BLUR_PERIOD_STATUS } from "@/components/UIScreenshot";
 
 export default function TrackingPage() {
   return (
     <PageLayout title="Tracking Submissions" subtitle="How to monitor which properties have submitted their reports.">
+      <UIScreenshot
+        src="/images/ui/period-status.png"
+        alt="Upload Status — search bar, status filter, and property table"
+        blurZones={BLUR_PERIOD_STATUS}
+        caption="Use the search bar and status filter to track property submissions"
+      />
+
       <h2>Using the Viewing Period</h2>
       <p>Select the month you want to track using the period selector. The table and summary cards will update to show the submission status for all properties in that period.</p>
 

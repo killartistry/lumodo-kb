@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_DASHBOARD } from "@/components/UIScreenshot";
 
 export default function KPIsPage() {
   return (
     <PageLayout title="Key Performance Indicators" subtitle="Understanding the 6 KPI cards on your Dashboard.">
+      <UIScreenshot
+        src="/images/ui/dashboard.png"
+        alt="Dashboard KPI cards — GPR, EGI, NOI, and expense ratios"
+        blurZones={BLUR_DASHBOARD}
+        caption="The six KPI cards displayed in a 3×2 grid on the Dashboard"
+      />
+
       <h2>Gross Potential Rent (GPR)</h2>
       <p>The maximum rent your portfolio could generate if every unit were leased at the current market rate. This is the theoretical revenue ceiling.</p>
 

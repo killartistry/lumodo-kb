@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_PROPERTIES } from "@/components/UIScreenshot";
 
 export default function PropertiesPage() {
   return (
     <PageLayout title="Properties" subtitle="Manage your property assets and their details.">
+      <UIScreenshot
+        src="/images/ui/properties.png"
+        alt="Properties page — table with Type, Units, Status, Billing, and Actions columns"
+        blurZones={BLUR_PROPERTIES}
+        caption="The Properties page with property listings, status badges, and action links"
+      />
+
       <h2>What You See</h2>
       <p>The Properties page shows a table of all properties in your portfolio. The header reads <strong>&quot;Properties&quot;</strong> with the subtitle &quot;Manage your property assets and their details.&quot;</p>
 

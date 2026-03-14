@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_DASHBOARD } from "@/components/UIScreenshot";
 
 export default function ChartsPage() {
   return (
     <PageLayout title="Charts" subtitle="Understanding the Income vs Expense and NOI Trend charts.">
+      <UIScreenshot
+        src="/images/ui/dashboard.png"
+        alt="Dashboard charts — Income vs Expense vs NOI and NOI Trend"
+        blurZones={BLUR_DASHBOARD}
+        caption="Income vs Expense vs NOI bar chart and NOI Trend line chart"
+      />
+
       <h2>Income vs Expense vs NOI</h2>
       <p>A grouped bar chart showing three values for each month across the trailing 12-month period:</p>
       <ul>

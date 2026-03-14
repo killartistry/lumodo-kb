@@ -1,8 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot, BLUR_REPORTS } from "@/components/UIScreenshot";
 
 export default function ReportsPage() {
   return (
     <PageLayout title="Reports" subtitle="Performance reports for your organization.">
+      <UIScreenshot
+        src="/images/ui/reports.png"
+        alt="Reports page — Financial Reports, Occupancy Reports, and Upload Status tabs"
+        blurZones={BLUR_REPORTS}
+        caption="The Reports page with Financial Reports, Occupancy Reports, and Upload Status tabs"
+      />
+
       <h2>What You See</h2>
       <p>The Reports page has three tabs:</p>
       <ol>

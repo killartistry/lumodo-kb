@@ -1,8 +1,15 @@
 import { PageLayout } from "@/components/PageLayout";
+import { UIScreenshot } from "@/components/UIScreenshot";
 
 export default function CreatingReportPage() {
   return (
     <PageLayout title="Creating a Report" subtitle="How to create a new report from a template.">
+      <UIScreenshot
+        src="/images/ui/create-report.png"
+        alt="Create Report from Template — Portfolio Performance and Property Monthly Operating Statement templates"
+        caption="Choose a report template: Portfolio Performance & Contribution or Property Monthly Operating Statement Review"
+      />
+
       <h2>Steps</h2>
       <ol>
         <li>Go to the <strong>Reports</strong> page</li>
